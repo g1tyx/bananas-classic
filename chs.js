@@ -83,7 +83,7 @@ var cnItems = {
     "Join our Discord": "加入我们的Discord",
     "locations left!\" she said. \"And each contains a billion bananas that needs to be eaten!\"": "剩下的位置！\”她说。“每个都包含需要吃掉的十亿根香蕉！\”",
     "Louigi Verona's Workshop": "Louigi Verona的工作室",
-    "Machinery": "机械",
+    "Machinery": "机械装置(网站有汉化版~)",
     "Make everyone 10 times as hungry": "让每个人的饥饿感增加 10 倍",
     "Massive Banana Detector": "大型香蕉探测器",
     "Massive Banana Multiplier": "大香蕉乘数",
