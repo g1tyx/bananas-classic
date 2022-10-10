@@ -111,7 +111,7 @@ var cnItems = {
     "Volume": "体积",
     "Copied": "已复制",
     "Turn it back on": "重新打开声音",
-    "": "",
+    "Hide prestige upgrades": "隐藏声望升级",
     "": "",
     "": "",
     "": "",
