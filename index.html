@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap" rel="stylesheet">
+
+<title>a billion bananas v1.0</title>
+<link id="currentStyle" type="text/css" href="light.css" rel="Stylesheet"/>
+<script type="text/javascript" src="jq/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="jq/lz-string.min.js"></script>
+<script type="text/javascript" src="jq/howler.core.min.js"></script>
+<script type="text/javascript" src="jq/script.js"></script>
+
+</head>
+<body>
+  <script src="chs.js"></script>
+  <script src="core.js"></script>
+<!--load game-->
+<div class="tagline" id="block_loadgame">
+  <p>Ready to eat bananas?</p>
+  <button class="button1" id="button_resume">Resume game</button>
+</div>
+
+<!--ending block-->
+<div class="story" id="block_ending">
+
+  <p class="purple"><b>All locations have been cleared!</b></p>
+
+  <p>"It's over, right?"</p>
+
+  <p>"It's over for now. But if we want to truly master the Great Banana Technology, we would need something more powerful" Wilbert said.</p>
+
+  <p>"Like what?" asked Ducky.</p>
+
+  <p>"I'd say, it's time to build up some <a class="orange" href="https://louigiverona.com/machinery/0.99.5/" target="_blank">Machinery</a>!"</p>
+
+
+
+</div>
+
+<!--story block-->
+<div class="story" id="block_story">
+
+  <p>"All the bananas are gone! Wonderful job!" said Ducky.</p>
+
+  <p>"I'm a professional," I smiled.</p>
+
+  <p>"But wait!"</p>
+
+  <p>Ducky and I turned to Wilbert.</p>
+
+  <p>"Our <i>Massive Banana Detector</i> shows that there are still about <b class="purple" id="label_locations">999999999</b> locations left!" she said. "And each contains a billion bananas that needs to be eaten!"</p>
+
+  <p>"Isn't that a bit too much?!"</p>
+
+  <p>"Don't worry! I developed these upgrades to help you on your way!"</p>
+
+  <br><br>
+
+  <table class="borderless_container_4">
+    <tr>
+      <td class="store_item">
+        <span class="orange">Massive Banana Multiplier</span><br>
+        Doubles the base amount of bananas everyone can eat in a single meal<br>
+        <span class="small">Current base: <span id="label_mbm">1</span>/8192</span><br><br>
+        <button class="button_prestige_show" id="button_story_mbm_upgrade">Enter New Location</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="store_item">
+        <span class="orange">Autoeat</span><br>
+        The skill of professionals<br><br>
+        <button class="button_prestige_show" id="button_story_autoeat_upgrade">Enter New Location</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="store_item">
+        <span class="orange">Banana-Powered Engine</span><br>
+        Doubles the speed of the truck<br><br>
+        <button class="button_prestige_show" id="button_story_engine_upgrade">Enter New Location</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="store_item">
+        <span class="orange">Hire Manager</span><br>
+        Full package: befriends animals, upgrades truck, applies prestige!<br><br>
+        <button class="button_prestige_show" id="button_story_autofriend_upgrade">Enter New Location</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="store_item">
+        <span class="orange">Cloning Genie</span><br>
+        Eat bananas in 10 million locations at the same time<br><br>
+        <button class="button_prestige_show" id="button_story_genie_upgrade">Enter New Location</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="store_item">
+        Enter a location without upgrades<br><br>
+        <button class="button_prestige_show" id="button_story_empty_upgrade">Enter New Location</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<!--all-->
+<div id="all">
+
+  <!--indicators-->
+  <table class="borderless_container_5" id="block_indicator">
+    <tr>
+      <td class="store_item" id="indicator_manager">
+
+            Automatically enter new location<br><button class="button_prestige_show" id="button_story_autofriend_prestige2">OFF</button>
+
+      </td>
+      <td class="store_item" id="indicator_mbm"></td>
+    </tr>
+  </table>
+
+  <div class="tagline">There are <span id="label_bananas">1000000000</span> bananas. Eat them all!</div>
+
+  <table class="borderless_container_1">
+    <tr>
+      <td width="100%">
+        <div class="pb_background">
+          <div class="pb_eat" id="pb_eat"></div>
+        </div>
+      </td>
+      <td>
+        <button class="button1" id="button_eat">Eat</button>
+      </td>
+      <td>
+        <button class="button1" id="button_poop" disabled="disabled">Poop</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <!--poop block-->
+  <table class="borderless_container_2">
+    <tr>
+      <td>Poop:</td>
+      <td id="poop_label"></td>
+    </tr>
+    <tbody id="prestige_indicators">
+      <tr>
+        <td class="prestige">Prestige:</td>
+        <td class="prestige" id="label_prestige"></td>
+      </tr>
+      <tr id="block_prestige_show">
+        <td colspan="2"><button class="button_prestige_show" id="button_prestige_show">See upgrades</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--prestige-->
+  <table class="borderless_container_3" id="block_prestige">
+
+    <tr>
+      <td class="store_item">
+        Make everyone 10 times as hungry<br><br>
+        <button class="button_prestige_show" id="button_prestige_animals_upgrade">Restart Game</button>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="store_item">
+        Hire driver to ride the truck<br><br>
+        <button class="button_prestige_show" id="button_prestige_driver_upgrade">Restart Game</button>
+      </td>
+    </tr>
+
+  </table>
+
+
+  <!--first upgrades-->
+  <table class="borderless_container_3" id="block_first_upgrades">
+
+    <tr id="item_autopoop_upgrade">
+      <td class="store_item">
+        Autopoop: the skill of superheroes!<br><br>
+        <button class="button1" id="button_autopoop_upgrade"></button>
+      </td>
+    </tr>
+
+    <tr id="item_serving_upgrade">
+      <td class="store_item">
+        Chew several bananas at the same time<br>
+        <span id="label_serving"></span><br><br>
+        <button class="button1" id="button_serving_upgrade"></button>
+      </td>
+    </tr>
+
+  </table>
+
+  <!--animals & truck-->
+  <table class="borderless_container_0">
+    <tr>
+      <td width="50%">
+        <table class="borderless_container_4" id="block_animals">
+
+          <tr id="item_serving_upgrade">
+            <td class="store_item">
+              Befriend a monkey to help you eat bananas<br>
+              <span class="small" id="label_monkeys"></span>
+              <div class="pb_background">
+                <div class="pb_regular" id="pb_monkeys"></div>
+              </div>
+              <button class="button1" id="button_monkeys_upgrade"></button>
+            </td>
+          </tr>
+
+          <tr id="item_serving_upgrade">
+            <td class="store_item">
+              Ask an elephant to help you eat bananas<br>
+              <span class="small" id="label_elephants"></span>
+              <div class="pb_background">
+                <div class="pb_regular" id="pb_elephants"></div>
+              </div>
+              <button class="button1" id="button_elephants_upgrade"></button>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+      <td width="50%">
+        <table class="borderless_container_4" id="block_truck">
+
+          <tr id="item_serving_upgrade">
+            <td class="store_item">
+              Send a truck with bananas to your local community<br><br>
+              <div class="pb_background">
+                <div class="pb_regular" id="pb_truck"></div>
+              </div>
+              <button class="button1" id="button_truck_upgrade">Send truck</button>
+            </td>
+          </tr>
+
+          <tr id="item_serving_upgrade">
+            <td class="store_item">
+              Upgrade truck engines to make it faster<br>
+              <span class="small" id="label_truck_speed">Speed: 50 kmph</span><br><br>
+              <button class="button1" id="button_engine_upgrade"></button>
+            </td>
+          </tr>
+
+          <tr id="item_serving_upgrade">
+            <td class="store_item">
+              Upgrade truck capacity to transport more bananas<br>
+              <span class="small" id="label_truck_capacity">Capacity:</span><br><br>
+              <button class="button1" id="button_capacity_upgrade"></button>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+
+    </tr>
+  </table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!--footer-->
+  <div class="footer">
+    <div id="settings_block" style="display:none">
+      <table class="settings">
+        <tr>
+          <td>
+            Audio
+          </td>
+          <td>
+            <button class="system" id="button_audio">Turn it off</button>
+          </td>
+        </tr>
+        <tr>
+        <td>Volume <input type="range" class="lever" id="audio_control_volume" value="0.5" step="0.1" min="0" max="1"></td>
+        <td class="empty">&nbsp;</td>
+      </tr>
+        <tr>
+          <td>
+            Scientific notation
+          </td>
+          <td>
+            <button class="system" id="button_scientific">Toggle</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Dark theme
+          </td>
+          <td>
+            <button class="system" id="button_theme">Toggle</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="empty" colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+            Copy save
+          </td>
+          <td>
+            <button class="system" id="button_copysave">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Import save<br>
+            <div class="textarea" contenteditable="true" id="import_save_dump"></div>
+          </td>
+          <td>
+            <button class="system" id="button_importsave">Import</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><button class="system" id="button_delsave">Delete save</button> (resets all progress)</td>
+        </tr>
+      </table>
+    </div>
+    <span class="footer_item1"><button class="system" id="button_settings">Settings</button></span>
+    <span class="footer_item1"><button class="system" id="button_save">Save Game</button></span>
+
+    <span class="signature"><span class="footer_item1"><a class="lv_discord" href="https://discord.gg/AVHRPhJ" target="_blank">Join our Discord</a></span><span class="footer_item2"><a class="lv_site" href="https://louigiverona.com/?page=about" target="_blank">Louigi Verona's Workshop</a></span></span>
+  </div>
+<!--客服 开始-->
+<link rel="stylesheet" href="//g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.github.io/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计--> 
+<div style="display: none">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?028b1b5f659ed138230f4cafd7ad0dfc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    </div>
+</body>
+</html>
